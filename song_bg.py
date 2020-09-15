@@ -1,4 +1,4 @@
-#https://github.com/LuisBlanche/kaggle-birdsong-split-silence
+# https://github.com/LuisBlanche/kaggle-birdsong-split-silence
 
 import random
 import numpy as np
@@ -17,10 +17,10 @@ logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(message)s")
 ROOT = Path.cwd().parent
 DATA = ROOT / "data"
 INPUT_DATA = DATA
-TRAIN_AUDIO_DIRS = INPUT_DATA / 'train_audio_resampled' 
+TRAIN_AUDIO_DIRS = INPUT_DATA / "train_audio_resampled"
 
 OUTPUT_DATA = DATA / "train_audio_song_bg"
-TRAIN_SINGING_DIRS = OUTPUT_DATA / "singing" 
+TRAIN_SINGING_DIRS = OUTPUT_DATA / "singing"
 TRAIN_BACKGROUND_DIRS = OUTPUT_DATA / "background"
 
 
@@ -45,8 +45,7 @@ def take_random_sample(clip, sample_len=5, sample_rate=32000):
 
 
 def split_singing_background(clip, sample="background"):
-    """Removes silence from clip
-    """
+    """Removes silence from clip"""
     intervals = split_sound(clip)
     singing = []
     background = clip[0 : intervals[0][0]]
@@ -115,7 +114,11 @@ def main():
     train_list = get_train_list()
 
     logging.debug("Treating {TRAIN_AUDIO_DIRS[i]}")
-    for ebird_code in train_list.ebird_code.unique():# this returns the unique ebird code mathich the folder name
+    for (
+        ebird_code
+    ) in (
+        train_list.ebird_code.unique()
+    ):  # this returns the unique ebird code mathich the folder name
         ebird_dir = TRAIN_SINGING_DIRS / ebird_code
         background_dir = TRAIN_BACKGROUND_DIRS / ebird_code
         ebird_dir.mkdir(exist_ok=True, parents=True)
