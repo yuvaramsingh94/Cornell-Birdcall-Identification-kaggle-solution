@@ -11,3 +11,6 @@ apt-get install -y libsm6 libxext6 libxrender-dev libgl1-mesa-glx
 apt install ffmpeg
 pip install opencv-python
 pip install pytorch-pfn-extras
+
+
+https://www.kaggle.com/c/birdsong-recognition/discussion/183218
